@@ -80,21 +80,51 @@ All slide backgrounds are **pure white** `#FFFFFF`. Color variety is applied to 
 - Bullets: max 3 items, each max 15 characters
 - Body text: max 2 short sentences
 - Images: max 1 per slide
-- Mermaid diagrams: max 5 nodes
+- Infographic diagrams: max 5 nodes
 
 If content exceeds limits → split into multiple slides.
 
 ---
 
-## Phase 0: Detect Input
+## Phase 0: Detect Input Format
 
+**Step 1 — Source:**
 - **File path** → Read with `view_file`
 - **Inline content** → Use directly
 - **Obsidian images** (`![[img.png]]`) → Find with `find_by_name`, copy to `slides-generator/public/images/`
 
+**Step 2 — Detect section separators:**
+
+Check if the input contains `---` (horizontal rules) used as section dividers.
+
+- **Sectioned input** → Each `---` boundary = 1 slide. Count separators to determine total pages.
+- **Unsectioned input** → AI auto-structures the content into 8–12 slides.
+
+> [!IMPORTANT]
+> `---` is the standard Markdown horizontal rule AND Slidev's native slide separator.
+> When user input contains `---`, treat each section as one slide page.
+> The number of sections = the number of slides (plus cover + summary if not included).
+
 ---
 
 ## Phase 1: Analyze Article
+
+### Mode A — Sectioned Input (has `---` separators)
+
+When the user provides content with `---` dividers:
+
+1. Split input by `---` → each segment = 1 slide
+2. For each segment, determine:
+   - **Text content** → slide body text (respect all content from that section)
+   - **Visual type** → Does it need an AI image, infographic, or text-only?
+   - **Layout** → `content` (most), `section` (if segment is just a heading), `summary` (last)
+3. First segment → `cover` slide (title + subtitle)
+4. Last segment → `summary` slide (if it contains takeaways)
+5. Generate AI images for sections that describe abstract concepts or comparisons
+
+### Mode B — Unsectioned Input (plain text/article)
+
+When no `---` separators found:
 
 Extract:
 1. **Main topic** → Cover title + subtitle
@@ -102,14 +132,15 @@ Extract:
 3. **Key sections** → Section divider slides
 4. **Core arguments** → Content slides
 5. **Abstract concepts** → Candidates for AI image generation
-6. **Processes/flows** → Mermaid diagram slides
+6. **Processes/flows** → AI infographic diagram slides
 7. **Conclusions** → Summary slide takeaways
 
 ---
 
 ## Phase 2: Plan Slide Structure
 
-Target **8–12 slides** (2–5 min video).
+**Sectioned input** → Slide count = number of `---` sections. Follow user's structure exactly.
+**Unsectioned input** → Target **8–12 slides** (2–5 min video). AI decides structure.
 
 ```
 Cover → Section → Content(+image) → Content(+infographic) → Section → Content(+image) → Content(+infographic) → Content → Summary
