@@ -1,0 +1,248 @@
+/* ============================================
+   Generate-Slides Theme v3.4 — Apple Multi-Color
+   Canvas: 1080×1440 (3:4) → 录屏 627×836
+   Scale: 0.58× → all sizes compensated
+   配色: Premium Multi-Color (Apple-inspired)
+   ============================================ */
+
+:root {
+  /* Primary — Emerald (default accent) */
+  --emerald: #006B54;
+  --emerald-light: #00896B;
+  --emerald-bg: #E8F5E9;
+
+  /* Secondary — Amber/Gold (highlights, quotes) */
+  --amber: #B35A00;
+  --amber-light: #E6840A;
+  --amber-bg: #FFF3E0;
+
+  /* Tertiary — Indigo (section variety) */
+  --indigo: #3F3BBB;
+  --indigo-light: #5856D6;
+  --indigo-bg: #EDE7F6;
+
+  /* Accent — Coral (contrast, warnings) */
+  --coral: #C62828;
+  --coral-light: #E53935;
+  --coral-bg: #FFEBEE;
+
+  /* Accent — Teal (variety) */
+  --teal: #00838F;
+  --teal-light: #00ACC1;
+  --teal-bg: #E0F7FA;
+
+  /* Neutrals */
+  --bg: #FFFFFF;
+  --bg-soft: #F5F5F7;
+  --bg-card: #F2F2F7;
+  --text: #1D1D1F;
+  --text-sub: #3A3A3C;
+  --text-muted: #86868B;
+  --border: #D2D2D7;
+  --border-light: #E8E8ED;
+
+  /* Current accent (overridable per slide via CSS custom properties) */
+  --accent: var(--emerald);
+  --accent-light: var(--emerald-light);
+  --accent-bg: var(--emerald-bg);
+
+  /* Typography */
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --slide-padding: 80px 80px 200px 80px;
+}
+
+/* Force Light Mode */
+html, html.dark {
+  color-scheme: light !important;
+  --slidev-theme-background: #FFFFFF !important;
+}
+
+html.dark .slidev-layout,
+.slidev-layout {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--font) !important;
+  padding: var(--slide-padding) !important;
+  font-size: 44px !important;
+  line-height: 1.4 !important;
+  letter-spacing: -0.01em;
+}
+
+/* Typography */
+h1 {
+  font-size: 110px !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.08 !important;
+  text-align: center !important;
+}
+
+h2 {
+  font-size: 88px !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.1 !important;
+  text-align: center !important;
+  margin-bottom: 40px !important;
+}
+
+h3 {
+  font-size: 60px !important;
+  font-weight: 600 !important;
+  color: var(--text) !important;
+  text-align: center !important;
+}
+
+p {
+  font-size: 48px !important;
+  color: var(--text-sub) !important;
+  text-align: center !important;
+  line-height: 1.5 !important;
+  max-width: 90% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-weight: 500 !important;
+}
+
+strong {
+  color: var(--accent) !important;
+  font-weight: 700 !important;
+}
+
+em {
+  color: var(--text) !important;
+  font-style: italic;
+}
+
+/* Lists — card pills with accent left border */
+ul, ol {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  max-width: 92% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+
+li {
+  font-size: 44px !important;
+  line-height: 1.4 !important;
+  color: var(--text) !important;
+  text-align: center !important;
+  padding: 28px 40px !important;
+  background: var(--bg-card) !important;
+  border-radius: 20px !important;
+  border-left: 5px solid var(--accent) !important;
+  width: 100% !important;
+  max-width: 90% !important;
+  font-weight: 500 !important;
+}
+
+/* Alternating card accent colors for visual richness */
+li:nth-child(1) { border-left-color: var(--emerald) !important; }
+li:nth-child(1) strong { color: var(--emerald) !important; }
+
+li:nth-child(2) { border-left-color: var(--indigo) !important; }
+li:nth-child(2) strong { color: var(--indigo) !important; }
+
+li:nth-child(3) { border-left-color: var(--amber) !important; }
+li:nth-child(3) strong { color: var(--amber) !important; }
+
+li:nth-child(4) { border-left-color: var(--teal) !important; }
+li:nth-child(4) strong { color: var(--teal) !important; }
+
+/* Blockquotes — warm amber accent */
+blockquote {
+  border-left: 6px solid var(--amber) !important;
+  background: var(--amber-bg) !important;
+  border-radius: 24px !important;
+  padding: 40px 48px !important;
+  margin: 32px auto !important;
+  max-width: 88% !important;
+}
+
+blockquote p {
+  font-size: 48px !important;
+  color: var(--text) !important;
+  font-style: italic !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+}
+
+/* Tables */
+table {
+  width: 88% !important;
+  margin: 32px auto !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  background: var(--bg-soft) !important;
+}
+
+th {
+  background: var(--emerald) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  padding: 24px 28px !important;
+  text-align: center !important;
+  font-size: 40px !important;
+}
+
+td {
+  padding: 22px 28px !important;
+  text-align: center !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  color: var(--text) !important;
+  font-size: 40px !important;
+  font-weight: 500 !important;
+}
+
+tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Images */
+img:not(.mermaid img) {
+  border-radius: 24px !important;
+  max-width: 88% !important;
+  margin: 24px auto !important;
+  display: block !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Code */
+pre {
+  background: var(--bg-soft) !important;
+  border-radius: 20px !important;
+  padding: 32px !important;
+  margin: 28px auto !important;
+  max-width: 88% !important;
+}
+
+code {
+  font-family: var(--font-mono) !important;
+  font-size: 36px !important;
+}
+
+:not(pre) > code {
+  background: var(--emerald-bg) !important;
+  padding: 4px 16px !important;
+  border-radius: 10px !important;
+  color: var(--emerald) !important;
+}
+
+/* Hide Slidev UI */
+.slidev-page-number { display: none !important; }
+
+/* br spacing */
+br {
+  display: block !important;
+  content: '' !important;
+  margin-top: 20px !important;
+}

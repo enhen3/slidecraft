@@ -1,0 +1,17 @@
+{
+  "name": "xhs-slides-generator",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev export --format png --output ./output",
+    "export-pdf": "slidev export --output ./output/slides.pdf",
+    "preview": "slidev --open --port 3030"
+  },
+  "dependencies": {
+    "@slidev/cli": "^51.0.0",
+    "@slidev/theme-default": "latest"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.49.0"
+  }
+}
