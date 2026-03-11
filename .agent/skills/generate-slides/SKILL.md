@@ -3,7 +3,7 @@ name: generate-slides
 description: Generate beautiful vertical slides (3:4) from Obsidian markdown articles for 小红书 video recording. Use when the user mentions slides, 幻灯片, PPT, presentation, 小红书 video, visual content for video, or wants to convert their notes/articles into presentation format for recording. Also use when the user provides an Obsidian article path and wants visual content generated.
 metadata:
   author: haoyangs
-  version: "3.4"
+  version: "3.6"
 compatibility: Requires Node.js, npm. Slidev project at slides-generator/ must have dependencies installed.
 ---
 
@@ -67,11 +67,30 @@ All slide backgrounds are **pure white** `#FFFFFF`. Color variety is applied to 
 ## Core Principles
 
 1. **One Point Per Slide** — Each slide communicates exactly ONE idea
-2. **Visual Every Slide** — Use AI images, Mermaid diagrams, tables, or blockquotes. NO text-only slides
+2. **Visual Every Slide** — Use AI images, tables, or blockquotes. NO text-only slides
 3. **AI Image Generation** — For abstract concepts, generate illustrations with `generate_image`
 4. **Narrative Arc** — Problem → Exploration → Insight → Takeaway
 5. **Center Alignment** — All content centered, right-bottom reserved for face camera overlay
 6. **Unified Colors** — Only use colors from the Apple Design System table above
+
+### Animation Philosophy
+
+All animations are **entrance-only** (no hover effects). Reason: slides are screen-recorded for 小红书 video — there is no mouse interaction during playback.
+
+Before adding any animation, ask:
+1. Does it help the audience **follow the content flow**? (e.g., staggered card reveals guide reading order)
+2. Does it signal **content hierarchy**? (e.g., title drops in first, then body)
+3. Does it create **visual rhythm**? (e.g., consistent transition between slides)
+
+If the answer is "no" to all three → **don't add it.**
+
+| Animation | Element | Purpose |
+|-----------|---------|--------|
+| Fade-up | Entire slide | Signals new content |
+| Drop-in | Title (h2) | Establishes topic first |
+| Staggered reveal | List items | Guides reading order |
+| Slide-in | Blockquote | Draws attention to quote |
+| Scale-in | Image | Draws eye to visual |
 
 ## Content Density Limits
 
