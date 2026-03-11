@@ -1,5 +1,5 @@
 ---
-name: generate-slides
+name: slidecraft
 description: Generate beautiful vertical slides (3:4) from Obsidian markdown articles for 小红书 video recording. Use when the user mentions slides, 幻灯片, PPT, presentation, 小红书 video, visual content for video, or wants to convert their notes/articles into presentation format for recording. Also use when the user provides an Obsidian article path and wants visual content generated.
 metadata:
   author: haoyangs
