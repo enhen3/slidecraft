@@ -246,3 +246,167 @@ br {
   content: '' !important;
   margin-top: 20px !important;
 }
+
+/* ============================================
+   INTERACTIVE ANIMATIONS v3.5
+   ============================================ */
+
+/* Custom Easing Curves */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Slide Entrance Animation ── */
+.slidev-layout {
+  animation: slideEntrance 0.7s var(--ease-out-expo) both !important;
+}
+
+@keyframes slideEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Staggered List Item Entrance ── */
+li {
+  animation: itemReveal 0.5s var(--ease-out-expo) both !important;
+  transition: transform 0.3s var(--ease-smooth),
+              box-shadow 0.3s var(--ease-smooth),
+              border-left-color 0.3s ease !important;
+}
+
+li:nth-child(1) { animation-delay: 0.1s !important; }
+li:nth-child(2) { animation-delay: 0.2s !important; }
+li:nth-child(3) { animation-delay: 0.3s !important; }
+li:nth-child(4) { animation-delay: 0.4s !important; }
+
+@keyframes itemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Card Hover Effects ── */
+li:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 40px rgba(0, 107, 84, 0.12) !important;
+}
+
+li:nth-child(2):hover {
+  box-shadow: 0 12px 40px rgba(63, 59, 187, 0.12) !important;
+}
+
+li:nth-child(3):hover {
+  box-shadow: 0 12px 40px rgba(179, 90, 0, 0.12) !important;
+}
+
+li:nth-child(4):hover {
+  box-shadow: 0 12px 40px rgba(0, 131, 143, 0.12) !important;
+}
+
+/* ── Image Hover Effect ── */
+img:not(.mermaid img) {
+  transition: transform 0.4s var(--ease-smooth),
+              box-shadow 0.4s var(--ease-smooth) !important;
+}
+
+img:not(.mermaid img):hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 16px 48px rgba(0, 107, 84, 0.15) !important;
+}
+
+/* ── Blockquote Entrance ── */
+blockquote {
+  animation: quoteEntrance 0.7s var(--ease-out-expo) 0.2s both !important;
+  transition: border-left-color 0.4s ease,
+              box-shadow 0.4s ease !important;
+}
+
+blockquote:hover {
+  border-left-color: var(--amber-light) !important;
+  box-shadow: 0 8px 32px rgba(179, 90, 0, 0.1) !important;
+}
+
+@keyframes quoteEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── H2 Title Entrance ── */
+h2 {
+  animation: titleEntrance 0.6s var(--ease-out-expo) both !important;
+}
+
+@keyframes titleEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Bold Text Accent Pulse ── */
+strong {
+  transition: color 0.3s ease !important;
+  position: relative;
+}
+
+strong::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+strong:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Table Hover Rows ── */
+tr {
+  transition: background 0.2s ease !important;
+}
+
+tr:hover td {
+  background: var(--emerald-bg) !important;
+}
+
+/* ── Inline Code Pop ── */
+:not(pre) > code {
+  transition: background 0.2s ease,
+              transform 0.2s var(--ease-spring) !important;
+}
+
+:not(pre) > code:hover {
+  background: var(--emerald) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+}
