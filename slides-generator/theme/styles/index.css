@@ -1,10 +1,19 @@
 /* ============================================
-   SlideCraft Theme v3.6
+   SlideCraft Theme v4.0
    Canvas: 1080×1440 (3:4) → 录屏 627×836
    Scale: 0.58× → all sizes compensated
-   配色: Apple Multi-Color + Subtle Gradient BG
-   动画: Entrance-only (no hover — 录屏无鼠标)
+   
+   Design Philosophy (学习参考站 EvoMap OPC Day):
+   - Serif titles (Noto Serif SC) for authority
+   - Orange keyword highlights for instant hierarchy
+   - Category labels with wide letter-spacing
+   - Dark rounded cards for workflow/feature lists
+   - Staggered entrance animations (0.7s ease-out)
+   - Emoji as functional icons, not decoration
    ============================================ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
 :root {
   /* Primary — Emerald (default accent) */
@@ -16,6 +25,9 @@
   --amber: #B35A00;
   --amber-light: #E6840A;
   --amber-bg: #FFF3E0;
+
+  /* Highlight — Orange (keyword highlighting in titles) */
+  --highlight: #E8740C;
 
   /* Tertiary — Indigo (section variety) */
   --indigo: #3F3BBB;
@@ -36,21 +48,28 @@
   --bg: #FFFFFF;
   --bg-soft: #F5F5F7;
   --bg-card: #F2F2F7;
+  --bg-card-dark: #1C1C1E;
   --text: #1D1D1F;
   --text-sub: #3A3A3C;
-  --text-muted: #86868B;
+  --text-muted: #8E8E93;
   --border: #D2D2D7;
   --border-light: #E8E8ED;
 
-  /* Current accent (overridable per slide via CSS custom properties) */
+  /* Current accent */
   --accent: var(--emerald);
   --accent-light: var(--emerald-light);
   --accent-bg: var(--emerald-bg);
 
-  /* Typography */
-  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Helvetica Neue', sans-serif;
-  --font-mono: 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
-  --slide-padding: 80px 80px 200px 80px;
+  /* Typography — Serif for titles, Sans for body */
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'STSong', Georgia, serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --font: var(--font-sans);
+  
+  --slide-padding: 80px 80px 360px 80px;
+  
+  /* Animation */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Force Light Mode */
@@ -61,56 +80,61 @@ html, html.dark {
 
 html.dark .slidev-layout,
 .slidev-layout {
-  /* Apple-style subtle gradient: white center with faint color tints at edges */
+  /* iOS systemGroupedBackground style */
   background:
-    radial-gradient(ellipse at 10% 0%, rgba(0, 107, 84, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 95% 5%, rgba(63, 59, 187, 0.03) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 100%, rgba(179, 90, 0, 0.02) 0%, transparent 40%),
-    #FFFFFF !important;
+    radial-gradient(ellipse at 0% 0%, rgba(0, 107, 84, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 0%, rgba(63, 59, 187, 0.04) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 100%, rgba(179, 90, 0, 0.04) 0%, transparent 50%),
+    #E2E2EA !important;
   color: var(--text) !important;
-  font-family: var(--font) !important;
+  font-family: var(--font-sans) !important;
   padding: var(--slide-padding) !important;
   font-size: 44px !important;
-  line-height: 1.4 !important;
+  line-height: 1.5 !important;
   letter-spacing: -0.01em;
 }
 
-/* Typography */
+/* ── Typography ── */
+
 h1 {
+  font-family: var(--font-serif) !important;
   font-size: 110px !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   color: var(--text) !important;
-  letter-spacing: -0.04em !important;
-  line-height: 1.08 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
   text-align: center !important;
 }
 
 h2 {
+  font-family: var(--font-serif) !important;
   font-size: 88px !important;
   font-weight: 700 !important;
   color: var(--text) !important;
-  letter-spacing: -0.03em !important;
-  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
   text-align: center !important;
   margin-bottom: 40px !important;
 }
 
 h3 {
+  font-family: var(--font-serif) !important;
   font-size: 60px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   color: var(--text) !important;
   text-align: center !important;
 }
 
 p {
+  font-family: var(--font-sans) !important;
   font-size: 48px !important;
   color: var(--text-sub) !important;
   text-align: center !important;
-  line-height: 1.5 !important;
+  line-height: 1.6 !important;
   max-width: 90% !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
 }
 
 strong {
@@ -123,7 +147,31 @@ em {
   font-style: italic;
 }
 
-/* Lists — card pills with accent left border */
+/* ── Keyword Highlight ──
+   Usage: <span class="highlight">关键词</span>
+   Renders in orange for instant visual hierarchy */
+.highlight {
+  color: var(--highlight) !important;
+  font-weight: inherit;
+}
+
+/* ── Category Label ── 
+   Small gray text above main title 
+   Inspired by reference site's "养虾第一天" / "灵感一闪" labels */
+.category-label {
+  display: block;
+  font-family: var(--font-sans) !important;
+  font-size: 36px !important;
+  font-weight: 400 !important;
+  color: var(--text-muted) !important;
+  letter-spacing: 0.15em !important;
+  text-align: center !important;
+  margin-bottom: 16px !important;
+}
+
+/* ── Lists — Subtle premium cards ── 
+   Inspired by reference site: near-transparent bg, 
+   fine 1px border, no heavy left-border accent */
 ul, ol {
   list-style: none !important;
   padding: 0 !important;
@@ -132,55 +180,166 @@ ul, ol {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 20px !important;
+  gap: 14px !important;
 }
 
 li {
-  font-size: 44px !important;
-  line-height: 1.4 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 40px !important;
+  line-height: 1.5 !important;
   color: var(--text) !important;
-  text-align: center !important;
-  padding: 28px 40px !important;
-  background: var(--bg-card) !important;
-  border-radius: 20px !important;
-  border-left: 5px solid var(--accent) !important;
+  text-align: left !important;
+  padding: 20px 32px !important;
+  /* iOS Card — white on gray */
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.10),
+    0 4px 14px rgba(0, 0, 0, 0.07) !important;
   width: 100% !important;
-  max-width: 90% !important;
-  font-weight: 500 !important;
+  max-width: 92% !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
 }
 
-/* Alternating card accent colors for visual richness */
-li:nth-child(1) { border-left-color: var(--emerald) !important; }
+/* Alternating accent colors on bold keywords only */
 li:nth-child(1) strong { color: var(--emerald) !important; }
-
-li:nth-child(2) { border-left-color: var(--indigo) !important; }
 li:nth-child(2) strong { color: var(--indigo) !important; }
-
-li:nth-child(3) { border-left-color: var(--amber) !important; }
 li:nth-child(3) strong { color: var(--amber) !important; }
-
-li:nth-child(4) { border-left-color: var(--teal) !important; }
 li:nth-child(4) strong { color: var(--teal) !important; }
+li:nth-child(5) strong { color: var(--coral) !important; }
+li:nth-child(6) strong { color: var(--emerald) !important; }
 
-/* Blockquotes — warm amber accent */
+/* ── Feature Card Grid ── 
+   3 cards side-by-side for features/concepts */
+.card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  max-width: 96% !important;
+  margin: 24px auto !important;
+}
+
+.feature-card {
+  /* iOS Card — white on gray */
+  background: #FFFFFF !important;
+  border-radius: 18px !important;
+  padding: 28px 20px !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 10px !important;
+  border: none !important;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.10),
+    0 4px 14px rgba(0, 0, 0, 0.07) !important;
+}
+
+.feature-card p {
+  font-size: 30px !important;
+  color: var(--text-muted) !important;
+  font-weight: 300 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  letter-spacing: 0.02em !important;
+}
+
+.feature-card strong {
+  font-size: 36px !important;
+  display: block !important;
+}
+
+/* ── Split Layout — Left Text + Right Image ── */
+.split-layout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 32px !important;
+  width: 100% !important;
+  align-items: center !important;
+  margin: 24px auto !important;
+}
+
+.split-text {
+  text-align: left !important;
+}
+
+.split-text p {
+  text-align: left !important;
+  font-size: 40px !important;
+}
+
+.split-image img {
+  max-width: 100% !important;
+  border-radius: 20px !important;
+}
+
+/* ── Image Grid ── */
+.image-grid {
+  display: grid !important;
+  gap: 16px !important;
+  width: 100% !important;
+  margin: 24px auto !important;
+}
+
+.image-grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.image-grid.cols-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.image-grid img {
+  border-radius: 16px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* ── Blockquotes — iOS Card on gray ── */
 blockquote {
-  border-left: 6px solid var(--amber) !important;
-  background: var(--amber-bg) !important;
-  border-radius: 24px !important;
-  padding: 40px 48px !important;
-  margin: 32px auto !important;
-  max-width: 88% !important;
+  border: none !important;
+  border-left: none !important;
+  /* iOS Card — white on gray */
+  background: #FFFFFF !important;
+  border-radius: 20px !important;
+  padding: 32px 40px !important;
+  margin: 24px auto !important;
+  max-width: 90% !important;
+  position: relative !important;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.10),
+    0 6px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+blockquote::before {
+  content: '"' !important;
+  position: absolute !important;
+  top: -8px !important;
+  left: 24px !important;
+  font-family: var(--font-serif) !important;
+  font-size: 80px !important;
+  color: var(--highlight) !important;
+  opacity: 0.3 !important;
+  line-height: 1 !important;
 }
 
 blockquote p {
-  font-size: 48px !important;
+  font-family: var(--font-serif) !important;
+  font-size: 42px !important;
   color: var(--text) !important;
-  font-style: italic !important;
+  font-style: normal !important;
   text-align: center !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.01em !important;
 }
 
-/* Tables */
+/* ── Tables ── */
 table {
   width: 88% !important;
   margin: 32px auto !important;
@@ -206,14 +365,14 @@ td {
   border-bottom: 1px solid var(--border-light) !important;
   color: var(--text) !important;
   font-size: 40px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
 }
 
 tr:last-child td {
   border-bottom: none !important;
 }
 
-/* Images */
+/* ── Images ── */
 img:not(.mermaid img) {
   border-radius: 24px !important;
   max-width: 88% !important;
@@ -222,7 +381,7 @@ img:not(.mermaid img) {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Code */
+/* ── Code ── */
 pre {
   background: var(--bg-soft) !important;
   border-radius: 20px !important;
@@ -250,28 +409,20 @@ code {
 br {
   display: block !important;
   content: '' !important;
-  margin-top: 20px !important;
+  margin-top: 16px !important;
 }
 
 /* ============================================
-   PRESENTATION ANIMATIONS v3.6
+   ANIMATIONS v4.0
    
-   Animation Philosophy:
-   - ONLY entrance animations (slide transitions)
-   - NO hover effects (录屏时没有鼠标交互)
-   - Each animation must HELP the audience:
-     1. Guide eye flow (staggered reveals)
-     2. Signal content hierarchy (title first)
-     3. Create rhythm (consistent timing)
+   Based on reference site analysis:
+   - 0.7s slide-up for page transitions
+   - 0.6s for titles, 0.5s for content
+   - Staggered card reveals with 0.12s delay
+   - Category label fades in first
    ============================================ */
 
-:root {
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ── Slide Entrance: Fade Up ── 
-   Purpose: Smooth transition between slides, 
-   signals "new content" to audience */
+/* ── Slide Entrance: Fade Up ── */
 .slidev-layout {
   animation: slideEntrance 0.7s var(--ease-out-expo) both !important;
 }
@@ -287,40 +438,15 @@ br {
   }
 }
 
-/* ── Title Entrance: Drop In ── 
-   Purpose: Title appears first, establishes topic 
-   before content loads */
-h2 {
-  animation: titleEntrance 0.6s var(--ease-out-expo) both !important;
+/* ── Category Label: Quick Fade ── */
+.category-label {
+  animation: categoryFade 0.4s var(--ease-out-expo) both !important;
 }
 
-@keyframes titleEntrance {
+@keyframes categoryFade {
   from {
     opacity: 0;
-    transform: translateY(-20px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* ── Staggered Card Reveals ── 
-   Purpose: Audience reads items top-to-bottom,
-   stagger matches natural reading speed */
-li {
-  animation: itemReveal 0.5s var(--ease-out-expo) both !important;
-}
-
-li:nth-child(1) { animation-delay: 0.1s !important; }
-li:nth-child(2) { animation-delay: 0.2s !important; }
-li:nth-child(3) { animation-delay: 0.3s !important; }
-li:nth-child(4) { animation-delay: 0.4s !important; }
-
-@keyframes itemReveal {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -328,9 +454,66 @@ li:nth-child(4) { animation-delay: 0.4s !important; }
   }
 }
 
-/* ── Blockquote Entrance: Slide In ── 
-   Purpose: Quotes are special content — 
-   left-slide draws attention as "someone said this" */
+/* ── Title Entrance: Drop In ── */
+h2 {
+  animation: titleEntrance 0.6s var(--ease-out-expo) 0.1s both !important;
+}
+
+@keyframes titleEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Staggered Card Reveals ── */
+li {
+  animation: itemReveal 0.5s var(--ease-out-expo) both !important;
+}
+
+li:nth-child(1) { animation-delay: 0.12s !important; }
+li:nth-child(2) { animation-delay: 0.24s !important; }
+li:nth-child(3) { animation-delay: 0.36s !important; }
+li:nth-child(4) { animation-delay: 0.48s !important; }
+li:nth-child(5) { animation-delay: 0.60s !important; }
+li:nth-child(6) { animation-delay: 0.72s !important; }
+
+@keyframes itemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Feature Card Stagger ── */
+.feature-card {
+  animation: cardReveal 0.5s var(--ease-out-expo) both !important;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.15s !important; }
+.feature-card:nth-child(2) { animation-delay: 0.30s !important; }
+.feature-card:nth-child(3) { animation-delay: 0.45s !important; }
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Blockquote Entrance: Slide In ── */
 blockquote {
   animation: quoteEntrance 0.7s var(--ease-out-expo) 0.2s both !important;
 }
@@ -338,7 +521,7 @@ blockquote {
 @keyframes quoteEntrance {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-16px);
   }
   to {
     opacity: 1;
@@ -346,20 +529,32 @@ blockquote {
   }
 }
 
-/* ── Image Entrance: Fade Scale ── 
-   Purpose: Images appear with subtle scale,
-   draws eye to visual content */
+/* ── Image Entrance: Scale In ── */
 img:not(.mermaid img) {
-  animation: imageEntrance 0.6s var(--ease-out-expo) 0.15s both !important;
+  animation: imageEntrance 0.6s var(--ease-out-expo) 0.2s both !important;
 }
 
 @keyframes imageEntrance {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.92);
   }
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* ── Paragraph Body Text: Subtle Fade ── */
+p {
+  animation: textFade 0.5s var(--ease-out-expo) 0.15s both !important;
+}
+
+@keyframes textFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
