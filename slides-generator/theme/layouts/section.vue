@@ -6,19 +6,6 @@
   </div>
 </template>
 
-<script setup>
-const props = defineProps({
-  color: { type: String, default: 'emerald' }
-})
-
-const colorMap = {
-  emerald: '#006B54',
-  amber:   '#B35A00',
-  indigo:  '#3F3BBB',
-  teal:    '#00838F',
-}
-</script>
-
 <style scoped>
 .section-layout {
   display: flex;
@@ -26,6 +13,7 @@ const colorMap = {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding-bottom: 160px;
   text-align: center;
   background: #FFFFFF !important;
 }
@@ -35,21 +23,24 @@ const colorMap = {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .section-content :deep(h2) {
+  font-family: 'Noto Serif SC', 'Songti SC', Georgia, serif !important;
   font-size: 96px !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   color: #1D1D1F !important;
-  letter-spacing: -0.03em !important;
-  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
 }
 
 .section-content :deep(p) {
-  font-size: 48px !important;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif !important;
+  font-size: 44px !important;
   color: #006B54 !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   line-height: 1.4 !important;
+  letter-spacing: 0.02em !important;
 }
 </style>

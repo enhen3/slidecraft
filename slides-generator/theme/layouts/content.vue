@@ -13,6 +13,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding-bottom: 160px;
   background: #FFFFFF !important;
   color: #1D1D1F !important;
 }
@@ -25,3 +26,4 @@
   align-items: center;
 }
 </style>
+

@@ -1,6 +1,6 @@
 ---
 theme: ./theme
-title: AI 时代：High Agency × Agent 工程
+title: Harness Engineering
 layout: cover
 aspectRatio: 3/4
 canvasWidth: 1080
@@ -9,203 +9,212 @@ drawings:
   enabled: false
 ---
 
-# AI 时代的三个真相
+# Harness<br><span class="highlight">Engineering</span>
 
-![三条路](/images/cover_visual.png)
-
-High Agency · App 终结 · 开发者生存指南
+智能体框架工程
 
 <!-- 
 讲解提示：
-- 开场：今天聊聊 OpenClaw 创始人 Peter Steinberger 的几个核心观点
-- 预告三个模块
+- 开场引入：从 Prompt Engineering 到 Context Engineering
+- 再到今天的主角：Harness Engineering
+- 如果你想驾驭 AI，这是必修课
+-->
+
+---
+layout: content
+---
+
+<span class="category-label">核 心 概 念</span>
+
+## 🐴 什么是 <span class="highlight">Harness</span>？
+
+![Harness 隐喻](/images/harness-metaphor.png)
+
+包裹在 AI 模型外围的**编排层**
+
+<!-- 
+讲解提示：
+- Harness 原意是缰绳和马具
+- 野马有力量但会乱跑
+- 套上马具才能控制方向
+- 包含提示词工具、反馈回路、约束条件
+- Claude Code、Codex 就是最好的例子
+-->
+
+---
+layout: content
+---
+
+<span class="category-label">身 份 转 变</span>
+
+## 从操作员到<span class="highlight">架构师</span>
+
+![架构师指挥](/images/architect-conductor.png)
+
+人类掌舵，**智能体执行**
+
+<!-- 
+讲解提示：
+- Prompt Engineering → 操作员直接交互
+- Harness Engineering → 系统架构师
+- 设计一套系统让 AI "实习生"高效协作
+- 核心八个字：人类掌舵，智能体执行
 -->
 
 ---
 layout: section
-color: emerald
 ---
 
-## 🎯 第一个真相
+## ⚠️ 三个<span class="highlight">致命痛点</span>
 
-High Agency 是入场券
+AI 独立干大项目为什么不行？
 
 <!-- 
 讲解提示：
-- Peter 认为 AI 时代最重要的特质
-- 引出 High Agency
+- 为什么非得要 Harness？
+- 因为现阶段 AI 独立干大项目有三个致命问题
 -->
 
 ---
 layout: content
 ---
 
-## High Agency 不是新概念
+<span class="category-label">痛 点 一</span>
 
-![High Agency — 主动出击](/images/high_agency.png)
+## 上下文<span class="highlight">焦虑症</span>
 
-每个时代的说法不同，但要的是**同一种人**
+![上下文焦虑](/images/context-anxiety.png)
+
+给太多信息，核心信号被**噪音淹没**
 
 <!-- 
 讲解提示：
-- 情商语境 → "有眼色的人"
-- 公司语境 → "自主能动性"
-- 个人成长 → "自驱力"
-- AI 时代 → "折腾精神"
+- AI 的"失忆症"和"上下文焦虑"
+- 超长文档让核心信号被噪音淹没
+- 解法：不给一千页说明书，给一张"地图"
+- 把代码仓库变成系统的记忆库
 -->
 
 ---
 layout: content
 ---
 
-## High Agency 的不同表达
+<span class="category-label">痛 点 二</span>
 
-![四个语境下的 High Agency](/images/high_agency_mindmap.png)
+## 眼高手低<span class="highlight">不会拆</span>
+
+![多角色协作对比](/images/multi-role-comparison.png)
+
+多角色分工，**一步一个脚印**
 
 <!-- 
 讲解提示：
-- 不同时代不同词汇，说的是同一件事
-- 太阳底下没有新鲜事
+- AI 试图一次性 One-shot 整个应用
+- 干着干着内存不够、逻辑跑偏
+- 解法：多角色分工（产品经理+程序员+测试员）
+- 左：一个机器人独自造楼，一片混乱
+- 右：三个各司其职，井然有序
 -->
 
 ---
 layout: content
 ---
 
-## 折腾精神 > 勤奋
+<span class="category-label">痛 点 三</span>
 
-> *"The more you fuck around, the more you're gonna find out."*
+## <span class="highlight">盲目自信</span>的评分员
 
-Peter 认为，伟大产品往往诞生于**玩耍心态**
+> 让 AI 自评，写得再烂也给自己**五星好评**
 
-这是一种**不达目的不罢休**的行动力
+- 🔍 **对抗式评估** — 独立的铁面质检员
+- 🌐 **Playwright** — 像人类一样点击找 Bug
+
+灵感来自 **GAN 对抗网络**
 
 <!-- 
 讲解提示：
-- 念出英文原话
-- Fuck Around = 折腾, Find Out = 成长
+- AI 自我评估极差，永远觉得自己做得好
+- 解法：引入独立的对抗式评估者
+- 不是看代码文本，而是控制浏览器
+- 像真实用户一样操作找 Bug
+- 倒逼程序员 AI 不断修改
 -->
 
 ---
 layout: section
-color: indigo
 ---
 
-## 📱 第二个真相
+## 🔮 未来<span class="highlight">做减法</span>
 
-80% 的 App 将消亡
+The Bitter Lesson
 
 <!-- 
 讲解提示：
-- Peter 的大胆预测
+- 当未来模型足够聪明
+- Harness 的下一步就是做减法
+- The Bitter Lesson（苦涩的教训）
 -->
 
 ---
 layout: content
 ---
 
-## 为什么 App 会消亡？
+<span class="category-label">苦 涩 的 教 训</span>
 
-![App 正在被 Agent 取代](/images/app_dissolve.png)
+## 实习生变<span class="highlight">大牛</span>
 
-你的健身 App **不知道**你昨晚睡得好不好
+> 人类手工设计的复杂逻辑，最终都会成为**拖累**
+
+- 📝 大牛**不需要**写日报
+- 🔧 拆除脚手架，给予**极大自由**
+
+模型够强时，**少即是多**
 
 <!-- 
 讲解提示：
-- App = 数据孤岛
-- Agent = 全局视角
+- The Bitter Lesson：随着 AI 能力提升
+- 人类手工设计的复杂逻辑最终成为拖累
+- 实习生变大牛后不需要每天写日报
+- 你需要拆除脚手架，给他极大自由度
 -->
 
 ---
 layout: content
 ---
 
-## 从工具到系统
+<span class="category-label">终 极 形 态</span>
 
-![过去 vs 未来的交互方式](/images/past_vs_future.png)
+## <span class="highlight">鸟群</span>效应
 
-<!-- 
-讲解提示：
-- 过去：3 步繁琐交互
-- 未来：1 句话搞定
-- 交互倒置
--->
+![鸟群智能](/images/swarm-intelligence.png)
 
----
-layout: content
----
-
-## 30° 夹角
-
-> 产品不应长在大模型的延长线上
-
-- 朱广祥提出 **15° 夹角**
-- OpenClaw 启示 → 扩大到 **30°**
-- 核心转变：**Agent-facing** 设计
+简单原则，涌现复杂形态
 
 <!-- 
 讲解提示：
-- 产品不只给人用，更是给 Agent 用
--->
-
----
-layout: section
-color: teal
----
-
-## 🔧 第三个真相
-
-编程思维 > 写代码
-
-<!-- 
-讲解提示：
-- Coding 权重在降
-- 但编程思维变得更重要
--->
-
----
-layout: content
----
-
-## 指挥官的基层经历
-
-![像指挥官一样协同 Agent](/images/commander.png)
-
-你不需要手写每一行代码，但**必须懂编程逻辑**
-
-<!-- 
-讲解提示：
-- 管培生 → 指挥官
-- Agentic Engineering > Vibe Coding
--->
-
----
-layout: content
----
-
-## Vibe Coding vs Agentic Engineering
-
-![对比：随机 vs 系统化](/images/vibe_vs_agentic.png)
-
-<!-- 
-讲解提示：
-- Peter 称 Vibe Coding 为"侮辱"
-- 系统化拆解 vs 凭感觉
+- 鸟群 Swarm Intelligence
+- 底层规则极其简单：别太近也别太远
+- 几条黄金原则就能抵抗系统的熵增
+- 涌现出人类难以模拟的复杂形态
+- Harness 终极形态：简单原则 → 涌现
 -->
 
 ---
 layout: summary
 ---
 
-## 三个真相 · 总结
+## 记住这个<span class="highlight">比喻</span>
 
-- **High Agency** — 每个时代不变的入场券
-- **80% App** — 将被全局 Agent 取代
-- **30° 夹角** — 面向 Agent 设计产品
-- **编程思维** — 指挥官不可缺的基层经历
+> 以前的 AI 像破了洞的**风筝**<br>用复杂线束死死拽住它
+
+> 未来的 AI 像**群鸟**<br>划定天空边界，欣赏自由飞翔
+
+评论区聊聊你对 **Harness** 的理解 👇
 
 <!-- 
 讲解提示：
-- 快速回顾四个要点
-- Build in Public，欢迎关注和讨论
+- 总结用两个比喻收尾
+- 以前：破风筝 → 复杂 Harness 控制
+- 未来：群鸟 → 简单原则 → 自由飞翔
+- 引导评论区讨论
 -->

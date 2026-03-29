@@ -105,8 +105,9 @@ Every content slide should have a clear **3-level hierarchy**:
 2. **Visual Every Slide** — Use AI images, tables, or blockquotes. NO text-only slides
 3. **AI Image Generation** — For abstract concepts, generate illustrations with `generate_image`
 4. **Narrative Arc** — Problem → Exploration → Insight → Takeaway
-5. **Center Alignment** — All content centered, right-bottom reserved for face camera overlay
-6. **Unified Colors** — Only use colors from the Apple Design System table above
+5. **Center Alignment** — All content centered
+6. **Bottom-Right Safe Zone** — Bottom-right corner reserved for face camera overlay. All layouts use `padding-bottom: 160px` to push content above this zone. Images use `max-width: 72%` to prevent overflow. NO text, images, or interactive elements may appear in the bottom ~160px of any slide
+7. **Unified Colors** — Only use colors from the Apple Design System table above
 
 ### Animation Philosophy
 
@@ -373,9 +374,9 @@ Use `generate_image` for ALL visual needs — concepts, comparisons, mindmaps, f
 
 All AI-generated images within the **same presentation** must share a consistent visual style. Pick ONE style prefix and use it for every image in that deck.
 
-**The goal**: Images should feel like refined, premium editorial illustrations — vivid and alive, yet elegant and sophisticated. Avoid generic clip-art simplicity. Think high-end magazine art direction.
+**The goal**: Images should feel like refined, premium editorial illustrations — vivid and alive, yet elegant and sophisticated. Think high-end magazine art direction with warm, humanistic tones. Avoid generic clip-art simplicity.
 
-**Style Prefix A — Editorial Illustration (default):**
+**Style Prefix A — Editorial Illustration (default, STRONGLY preferred):**
 ```
 "Refined editorial illustration with sophisticated color palette.
 Use premium tones: warm ochre, slate blue, sage green, dusty rose,
@@ -385,16 +386,7 @@ premium magazine illustration. Artistic and vivid yet elegant.
 Square aspect ratio."
 ```
 
-**Style Prefix B — Refined Watercolor:**
-```
-"Refined watercolor illustration with artistic depth.
-Sophisticated palette: deep teal, burnt sienna, indigo wash,
-soft gold accents. Loose confident brush strokes with controlled detail.
-Warm cream background. No text. Feels like a high-end art print.
-Square aspect ratio."
-```
-
-**Style Prefix C — Soft 3D:**
+**Style Prefix B — Soft 3D:**
 ```
 "Soft 3D rendered illustration with premium material aesthetic.
 Matte finish surfaces in sage green, warm gray, dusty blue, and cream.
@@ -402,7 +394,14 @@ Subtle ambient occlusion shadows. Clean composition on light background.
 No text. Feels like a premium product render. Square aspect ratio."
 ```
 
-**Color philosophy**: Use sophisticated, curated color combinations — NOT random bright colors. Think:
+**⛔ BANNED styles** — Do NOT use these:
+- Neon glow / particle effects / holographic digital art
+- Dark silhouette with glowing outlines
+- Futuristic cyber / tech-forward aesthetic
+- Generic stock photo / clip-art
+- Any style that looks "AI-generated generic" or "cheap digital"
+
+**Color philosophy**: Use sophisticated, curated color combinations — NOT random bright neon. Think:
 - Warm ochre + slate blue + charcoal (elegant contrast)
 - Sage green + dusty rose + muted gold (refined harmony)
 - Deep teal + warm gray + burnt sienna (premium editorial)
@@ -555,9 +554,10 @@ After QA verification, return the user's **original script** with page-turn mark
 - ❌ Random colors → Only Apple palette colors
 - ❌ Small fonts → Use v4 font sizes
 - ❌ Left-aligned → Everything centered (unless using split layout)
-- ❌ No bottom padding → 200px for face cam
+- ❌ Content in bottom-right → All layouts have `padding-bottom: 160px` safe zone for face cam overlay
 - ❌ Plain titles without hierarchy → Always use keyword `<span class="highlight">` in titles
 - ❌ Inconsistent AI image styles → Use same style prefix for entire deck
+- ❌ Neon glow / silhouette / holographic digital art style → Use Editorial Illustration style ONLY
 - ❌ Decorative emoji → Only semantically relevant emoji
 - ✅ AI images for concepts, comparisons, mindmaps, and flowcharts
 - ✅ Bold accent on key terms (renders emerald green)

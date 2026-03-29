@@ -66,7 +66,7 @@
   --font-mono: 'JetBrains Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
   --font: var(--font-sans);
   
-  --slide-padding: 80px 80px 360px 80px;
+  --slide-padding: 80px 80px 320px 80px;
   
   /* Animation */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -375,8 +375,8 @@ tr:last-child td {
 /* ── Images ── */
 img:not(.mermaid img) {
   border-radius: 24px !important;
-  max-width: 88% !important;
-  margin: 24px auto !important;
+  max-width: 72% !important;
+  margin: 16px auto !important;
   display: block !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
 }
