@@ -106,7 +106,7 @@ Every content slide should have a clear **3-level hierarchy**:
 3. **AI Image Generation** — For abstract concepts, generate illustrations with `generate_image`
 4. **Narrative Arc** — Problem → Exploration → Insight → Takeaway
 5. **Center Alignment** — All content centered
-6. **Bottom-Right Safe Zone** — Bottom-right corner reserved for face camera overlay. All layouts use `padding-bottom: 160px` to push content above this zone. Images use `max-width: 72%` to prevent overflow. NO text, images, or interactive elements may appear in the bottom ~160px of any slide
+6. **Bottom-Right Safe Zone** — Bottom-right corner reserved for face camera overlay. All layouts use `padding-bottom: 320px` (in 1080×1440 canvas coordinates) to push content above this zone. Images use `max-width: 72%` to prevent overflow. NO text, images, or interactive elements may appear in the bottom safe zone of any slide
 7. **Unified Colors** — Only use colors from the Apple Design System table above
 
 ### Animation Philosophy
@@ -223,10 +223,10 @@ Cover → Section → Content(+image) → Content(+infographic) → Section → 
 
 | Layout | When to Use |
 |--------|------------|
-| `cover` | First slide only. Title + subtitle ONLY (no badge, no author, no date) |
+| `cover` | First slide only. Title + subtitle ONLY (no badge, no author, no date). Title MUST use `<span class="highlight">` on the most important keyword (renders orange) to create visual hierarchy |
 | `section` | Topic transitions. Large centered heading |
 | `content` | Text + AI image/infographic, bullets, blockquotes |
-| `summary` | Last slide. Key takeaways ONLY (no CTA button) |
+| `summary` | Last slide. Key takeaways ONLY (no CTA button). Do NOT use generic headings like "本期总结" / "Summary" — instead use a thematic closing phrase that echoes the topic (e.g. "从接龙到 Agent") or omit the H2 entirely and let the takeaway list speak for itself |
 
 > [!CAUTION]
 > Do NOT use `diagram` layout or Mermaid.js. Mermaid produces visually poor diagrams that don't match our premium aesthetic. Use AI-generated infographic images instead for ALL logic, structure, and comparison illustrations.
@@ -546,7 +546,9 @@ After QA verification, return the user's **original script** with page-turn mark
 
 - ❌ Separate `layout: cover` block → Put it in frontmatter to avoid blank page 1
 - ❌ Badge/author/date on cover → Cover is title + subtitle ONLY
+- ❌ Cover title without highlight → MUST use `<span class="highlight">` on the key keyword in title
 - ❌ CTA button on summary → Summary is key takeaways ONLY
+- ❌ Generic "本期总结" heading on summary → Use thematic phrase or omit heading
 - ❌ Mermaid.js for ANY diagram → Use AI-generated infographic images (ALWAYS)
 - ❌ `diagram` layout → Use `content` layout with AI image
 - ❌ Text-only slides → Add AI image, infographic, or emoji-based card grid
@@ -554,7 +556,7 @@ After QA verification, return the user's **original script** with page-turn mark
 - ❌ Random colors → Only Apple palette colors
 - ❌ Small fonts → Use v4 font sizes
 - ❌ Left-aligned → Everything centered (unless using split layout)
-- ❌ Content in bottom-right → All layouts have `padding-bottom: 160px` safe zone for face cam overlay
+- ❌ Content in bottom-right → All layouts have `padding-bottom: 320px` safe zone for face cam overlay
 - ❌ Plain titles without hierarchy → Always use keyword `<span class="highlight">` in titles
 - ❌ Inconsistent AI image styles → Use same style prefix for entire deck
 - ❌ Neon glow / silhouette / holographic digital art style → Use Editorial Illustration style ONLY
