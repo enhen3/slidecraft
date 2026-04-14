@@ -1,4 +1,4 @@
-# Layout Reference — Slidev 小红书 Theme
+# Layout Reference — Slidev 小红书 Theme (4:3 Horizontal)
 
 Complete syntax and examples for all available layouts.
 
@@ -10,8 +10,8 @@ Complete syntax and examples for all available layouts.
 ---
 theme: ./theme
 title: [Article Title]
-aspectRatio: 3/4
-canvasWidth: 1080
+aspectRatio: 4/3
+canvasWidth: 1440
 favicon: false
 drawings:
   enabled: false
@@ -132,8 +132,8 @@ layout: content
 \```typescript
 const config = {
   theme: './theme',
-  aspectRatio: '3/4',
-  canvasWidth: 1080
+  aspectRatio: '4/3',
+  canvasWidth: 1440
 }
 \```
 

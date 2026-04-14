@@ -1,15 +1,15 @@
 ---
 name: slidecraft
-description: Generate beautiful vertical slides (3:4) from Obsidian markdown articles for 小红书 video recording. Use when the user mentions slides, 幻灯片, PPT, presentation, 小红书 video, visual content for video, or wants to convert their notes/articles into presentation format for recording. Also use when the user provides an Obsidian article path and wants visual content generated.
+description: Generate beautiful horizontal slides (4:3) from Obsidian markdown articles for 小红书 video recording. Use when the user mentions slides, 幻灯片, PPT, presentation, 小红书 video, visual content for video, or wants to convert their notes/articles into presentation format for recording. Also use when the user provides an Obsidian article path and wants visual content generated.
 metadata:
   author: haoyangs
-  version: "4.0"
+  version: "5.0"
 compatibility: Requires Node.js, npm. Slidev project at slides-generator/ must have dependencies installed.
 ---
 
 # Generate 小红书 Video Slides
 
-Convert Obsidian markdown articles into stunning Slidev presentations optimized for 小红书 vertical video (3:4, 1080×1440px, recording viewport 627×836px).
+Convert Obsidian markdown articles into stunning Slidev presentations optimized for 小红书 horizontal video (4:3, 1440×1080px, recording viewport 836×627px).
 
 ## Quick Reference
 
@@ -83,7 +83,7 @@ Every content slide should have a clear **3-level hierarchy**:
 - Renders as small, spaced-out gray text above h2
 - Gives each slide a "section identity" without a full section divider
 
-### Font Sizes (for 627×836 recording viewport)
+### Font Sizes (for 836×627 recording viewport)
 
 | Element | Font | Weight | Canvas px | Appears as |
 |---------|------|--------|----------|------------|
@@ -95,7 +95,7 @@ Every content slide should have a clear **3-level hierarchy**:
 | List items (li) | Noto Sans SC | 400 | 42px | ~24px |
 | Card body | Noto Sans SC | 300 | 32px | ~19px |
 
-> These sizes are calibrated for a 1080×1440 canvas displayed at 627×836.
+> These sizes are calibrated for a 1440×1080 canvas displayed at 836×627.
 
 ---
 
@@ -106,7 +106,7 @@ Every content slide should have a clear **3-level hierarchy**:
 3. **AI Image Generation** — For abstract concepts, generate illustrations with `generate_image`
 4. **Narrative Arc** — Problem → Exploration → Insight → Takeaway
 5. **Center Alignment** — All content centered
-6. **Bottom-Right Safe Zone** — Bottom-right corner reserved for face camera overlay. All layouts use `padding-bottom: 320px` (in 1080×1440 canvas coordinates) to push content above this zone. Images use `max-width: 72%` to prevent overflow. NO text, images, or interactive elements may appear in the bottom safe zone of any slide
+6. **Bottom-Right Safe Zone** — Bottom-right corner reserved for face camera overlay. All layouts use `padding-bottom: 240px` and `padding-right: 280px` (in 1440×1080 canvas coordinates) to keep content clear of this zone. Images use `max-width: 75%` to prevent overflow into the safe zone. NO text, images, or interactive elements may appear in the bottom-right safe zone of any slide
 7. **Unified Colors** — Only use colors from the Apple Design System table above
 
 ### Animation Philosophy
@@ -355,8 +355,8 @@ The first slide's layout MUST be declared in the frontmatter. Otherwise Slidev c
 theme: ./theme
 title: [Article Title]
 layout: cover
-aspectRatio: 3/4
-canvasWidth: 1080
+aspectRatio: 4/3
+canvasWidth: 1440
 favicon: false
 drawings:
   enabled: false
@@ -383,7 +383,7 @@ Use premium tones: warm ochre, slate blue, sage green, dusty rose,
 charcoal gray, and muted gold. Clean white or warm off-white background.
 No text. Detailed with subtle textures and depth. Feels like a
 premium magazine illustration. Artistic and vivid yet elegant.
-Square aspect ratio."
+Landscape 4:3 aspect ratio."
 ```
 
 **Style Prefix B — Soft 3D:**
@@ -391,7 +391,7 @@ Square aspect ratio."
 "Soft 3D rendered illustration with premium material aesthetic.
 Matte finish surfaces in sage green, warm gray, dusty blue, and cream.
 Subtle ambient occlusion shadows. Clean composition on light background.
-No text. Feels like a premium product render. Square aspect ratio."
+No text. Feels like a premium product render. Landscape 4:3 aspect ratio."
 ```
 
 **⛔ BANNED styles** — Do NOT use these:
@@ -413,7 +413,7 @@ Prepend the chosen style prefix to every image prompt for the deck.
 **Template 1 — Concept illustration:**
 ```
 "[Style Prefix] [concept visual metaphor].
-Square aspect ratio."
+Landscape 4:3 aspect ratio."
 ```
 
 **Template 2 — Comparison / Before-After:**
@@ -423,7 +423,7 @@ LEFT side in red/gray: [old way label] with X mark,
 shows [old way icon + steps]. Arrow pointing to [bad outcome].
 RIGHT side in emerald green: [new way label] with checkmark,
 shows [new way icon + steps]. Arrow pointing to [good outcome].
-Square aspect ratio."
+Landscape 4:3 aspect ratio."
 ```
 
 **Template 3 — Mindmap / Structure:**
@@ -432,7 +432,7 @@ Square aspect ratio."
 Center circle shows [core concept].
 Four branches extend to four rounded cards, each with
 an icon and label: [branch1], [branch2], [branch3], [branch4].
-Square aspect ratio."
+Landscape 4:3 aspect ratio."
 ```
 
 **Template 4 — Scene illustration (NEW):**
@@ -440,7 +440,7 @@ Square aspect ratio."
 "[Style Prefix] A person [doing action related to slide topic],
 [setting: at desk / in coffee shop / standing at whiteboard].
 Showing [key element: laptop screen / notebook / phone].
-Warm, inviting atmosphere. Square aspect ratio."
+Warm, inviting atmosphere. Landscape 4:3 aspect ratio."
 ```
 Use for narrative/storytelling slides where a human context makes the concept relatable.
 
@@ -450,7 +450,7 @@ Use for narrative/storytelling slides where a human context makes the concept re
 [icon1 description], [icon2 description],
 [icon3 description], [icon4 description].
 Each icon inside a rounded square. Uniform style.
-Square aspect ratio."
+Landscape 4:3 aspect ratio."
 ```
 Use when the slide needs custom icons that emoji can't adequately represent.
 
@@ -496,7 +496,7 @@ Add HTML comments at end of each slide:
 > **Assume there are problems. Your job is to find them.**
 
 1. **Start server** — `cd slides-generator && npm run dev`
-2. **Visual check** — Browser subagent at 627×836 viewport, screenshot each slide:
+2. **Visual check** — Browser subagent at 836×627 viewport, screenshot each slide:
    - Text large enough for mobile video?
    - Colors match Apple palette?
    - Content centered?
@@ -556,7 +556,7 @@ After QA verification, return the user's **original script** with page-turn mark
 - ❌ Random colors → Only Apple palette colors
 - ❌ Small fonts → Use v4 font sizes
 - ❌ Left-aligned → Everything centered (unless using split layout)
-- ❌ Content in bottom-right → All layouts have `padding-bottom: 320px` safe zone for face cam overlay
+- ❌ Content in bottom-right → All layouts have `padding-bottom: 240px` and `padding-right: 280px` safe zone for face cam overlay
 - ❌ Plain titles without hierarchy → Always use keyword `<span class="highlight">` in titles
 - ❌ Inconsistent AI image styles → Use same style prefix for entire deck
 - ❌ Neon glow / silhouette / holographic digital art style → Use Editorial Illustration style ONLY

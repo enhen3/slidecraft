@@ -1,6 +1,6 @@
 # SlideCraft 🎨
 
-Generate beautiful vertical slides (3:4) from Obsidian markdown articles for 小红书 video recording.
+Generate beautiful horizontal slides (4:3) from Obsidian markdown articles for 小红书 video recording.
 
 An AI-powered skill that transforms your written content into premium, presentation-ready slides with Apple-inspired design aesthetics.
 
@@ -8,7 +8,7 @@ An AI-powered skill that transforms your written content into premium, presentat
 
 - **Apple Multi-Color Design System** — Curated 5-color palette (Emerald, Amber, Indigo, Teal, Coral)
 - **AI-Generated Infographics** — Mindmaps, comparisons, and concept illustrations auto-generated
-- **Optimized for 小红书** — 3:4 vertical aspect ratio, large readable text, face-cam safe zone
+- **Optimized for 小红书** — 4:3 horizontal aspect ratio, large readable text, face-cam safe zone
 - **Slidev-Powered** — Vue.js layouts, hot-reload dev server, markdown-native workflow
 - **Skill-Based** — Reusable, documented workflow for consistent slide generation
 
@@ -20,7 +20,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3030` (or assigned port) in browser at **627×836** viewport.
+Open `http://localhost:3030` (or assigned port) in browser at **836×627** viewport.
 
 ## Project Structure
 
@@ -58,7 +58,7 @@ slides-generator/                # Slidev project
 2. The skill analyzes content and plans 8–12 slides
 3. AI generates concept illustrations and infographic diagrams
 4. Produces `slides.md` with presenter notes
-5. Dev server renders premium slides at 627×836
+5. Dev server renders premium slides at 836×627
 
 ## License
 
